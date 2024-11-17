@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifa a beneficios de Yomaira</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+        /* Estilo para el encabezado y la imagen de perfil */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        .ticket-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .ticket {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .ticket.selected {
+            background-color: #FF69B4; /* Color rosado */
+            color: white;
+        }
+        .ticket.blocked {
+            background-color: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+        form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Estilos del botón de WhatsApp */
+        .whatsapp-button {
+            background-color: #25D366;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .whatsapp-button img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        /* Estilo de la imagen principal */
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+        /* Estilos responsivos para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column; /* Cambia a columna para alinear el título y la imagen verticalmente */
+                text-align: center;
+            }
+            .header img {
+                width: 60px; /* Ajusta el tamaño de la imagen de perfil */
+                height: 60px;
+                margin-top: 10px;
+            }
+            .image-container img {
+                width: 80%; /* Ajusta el tamaño de la imagen principal de la rifa */
+                max-width: 300px; /* Limita el tamaño máximo */
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado con imagen de perfil -->
+        <div class="header">
+            <h1>Rifa a beneficio de YOMAIRA DE GUEDEZ</h1>
+            <img src="img/geral.png" alt="Imagen de perfil de Geraldine">
+        </div>
+        
+    <h3>Estoy organizando una rifa para recaudar fondos para mi operación, ya que he sido diagnosticada con cáncer de mama derecha, específicamente un adenocarcinoma lobulillar infiltrante. Necesito realizarme una mastectomía radical y el costo de la cirugía es alto para mí. Con tu ayuda, podré tener la oportunidad de superar esta enfermedad. ¡Gracias de corazón por tu apoyo!</h3>
+<p>Sorteo se realizará el día <strong>viernes 29 de diciembre</strong> 7:00 pm por la lotería del Zulia</p>
+
+        
+        <!-- Imagen debajo del H3 -->
+        <div class="image-container">
+            <img src="img/phone.png" alt="Descripción de la imagen">
+        </div>
+
+        <div class="ticket-grid" id="tickets">
+            <!-- Los boletos se generarán aquí con JavaScript -->
+        </div>
+        
+        <!-- Formulario de Datos Personales -->
+        <form id="formulario" onsubmit="enviarSeleccion(); return false;">
+            <h2>Datos Personales</h2>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
+            <br><br>
+            <label for="medioPago">Medio de Pago:</label>
+            <select id="medioPago" required>
+                <option value="Pago movil">Pago movil</option>
+                <option value="Zelle">Zelle</option>
+                <option value="Pesos Chilenos">Pesos Chilenos</option>
+                <option value="Pesos Colombianos">Pesos Colombianos</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <br><br>
+            <button type="submit" class="whatsapp-button">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                Enviar Selección por WhatsApp
+            </button>
+        </form>
+    </div>
+    <script>
+        // JavaScript para manejar la rifa (sin cambios)
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbxrQhYkHwFSI4puNEWRZK0p7TfphMxhI45KKm4vP6OMoCPJNveXTuJWplhlS7xLj0HL/exec';
+        const ticketsContainer = document.getElementById('tickets');
+        let selectedTickets = [];
+
+        for (let i = 1; i <= 100; i++) {
+            const ticket = document.createElement('div');
+            ticket.classList.add('ticket');
+            ticket.id = `ticket-${i}`;
+            ticket.innerText = i;
+            ticket.onclick = () => seleccionarBoleto(ticket, i);
+            ticketsContainer.appendChild(ticket);
+        }
+
+        function seleccionarBoleto(ticket, numero) {
+            if (!ticket.classList.contains('blocked')) {
+                ticket.classList.toggle('selected');
+                if (selectedTickets.includes(numero)) {
+                    selectedTickets.splice(selectedTickets.indexOf(numero), 1);
+                } else {
+                    selectedTickets.push(numero);
+                }
+            }
+        }
+
+        function enviarSeleccion() {
+            const nombre = document.getElementById('nombre').value;
+            const medioPago = document.getElementById('medioPago').value;
+            const mensaje = `Hola, soy ${nombre}. Medio de Pago: ${medioPago}. Números seleccionados: ${selectedTickets.join(', ')}.`;
+            selectedTickets.forEach(numero => {
+                fetch(`${apiUrl}?number=${numero}&nombre=${encodeURIComponent(nombre)}&medioPago=${encodeURIComponent(medioPago)}`, {
+                    method: 'GET'
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => console.error('Error:', error));
+            });
+
+            const whatsappUrl = `https://wa.me/584146602325?text=${encodeURIComponent(mensaje)}`;
+            window.open(whatsappUrl, '_blank');
+            obtenerNumerosSeleccionados();
+        }
+
+        function obtenerNumerosSeleccionados() {
+            fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(num => {
+                    const ticketElement = document.getElementById(`ticket-${num}`);
+                    if (ticketElement) {
+                        ticketElement.classList.add('blocked');
+                        ticketElement.onclick = null;
+                    }
+                });
+            })
+            .catch(error => console.error('Error al obtener números seleccionados:', error));
+        }
+
+        document.addEventListener('DOMContentLoaded', obtenerNumerosSeleccionados);
+    </script>
+</body>
+</html>
+
