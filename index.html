@@ -109,37 +109,46 @@
             <h1>Rifa a beneficio de YOMAIRA DE GUEDEZ</h1>
             <img src="img/geral.png" alt="Imagen de perfil de Geraldine">
         </div>
-        
+             <!-- Imagen debajo del H3 -->
+             <div class="image-container">
+                <img src="img/phone.png" alt="Descripción de la imagen">
+            </div>
         <h3>¡GRACIAS A DIOS, MI OPERACIÓN FUE UN ÉXITO!</h3>
-        <p>Quiero compartir con ustedes una gran noticia: gracias a Dios y al apoyo de tantas personas solidarias, mi <strong>MASTECTOMÍA RADICAL</strong> fue realizada con éxito. Mi proceso de recuperación y cicatrización ha sido rápido, lo que me llena de esperanza y gratitud.</p>
-        <p>Ahora inicio la <strong>SEGUNDA FASE</strong> de este camino: estudios y consultas con oncología para determinar el tratamiento que debo seguir. Por ello, seguimos contando con tu valiosa colaboración para poder afrontar los costos médicos que aún quedan por cubrir.</p>
-        <p>El sorteo se realizará el día <strong>SÁBADO 17 DE FEBRERO  </strong> a las <strong>7:00 PM</strong>, tomando como referencia el <strong>Terminal del Tripe A</strong> de la Lotería del Zulia.</p>
-        <h3 style="background-color: #EA2D82; color: white; padding: 10px; text-align: center;">
-            <strong>VALOR DEL NÚMERO: $5 USD</strong>
-          </h3>
-          
-        
-        <p>💖 ¡TU APOYO SIGNIFICA UNA OPORTUNIDAD DE VIDA PARA MÍ! GRACIAS DE CORAZÓN POR ESTAR A MI LADO EN ESTA BATALLA.</p>
-        
+<p>Quiero compartir con ustedes una gran noticia: gracias a Dios y al apoyo de tantas personas solidarias, mi <strong>MASTECTOMÍA RADICAL</strong> fue realizada con éxito. Mi proceso de recuperación y cicatrización ha sido rápido, lo que me llena de esperanza y gratitud.</p>
+<p>Ahora inicio la <strong>SEGUNDA FASE</strong> de este camino: estudios y consultas con oncología para determinar el tratamiento que debo seguir. Por ello, seguimos contando con tu valiosa colaboración para poder afrontar los costos médicos que aún quedan por cubrir.</p>
+<p>El sorteo se realizará el día <strong>SÁBADO 17 DE FEBRERO</strong> a las <strong>7:00 PM</strong>, tomando como referencia el <strong>Terminal del Tripe A</strong> de la Lotería del Zulia.</p>
+<h3 style="background-color: #EA2D82; color: white; padding: 10px; text-align: center;">
+    <strong>VALOR DEL NÚMERO: $5 USD</strong>
+</h3>
+<p>💖 ¡TU APOYO SIGNIFICA UNA OPORTUNIDAD DE VIDA PARA MÍ! GRACIAS DE CORAZÓN POR ESTAR A MI LADO EN ESTA BATALLA.</p>
+
+<!-- Instrucciones -->
+<div style="margin-top: 20px; text-align: center;">
+    <h3 style="background-color: #4CAF50; color: white; padding: 10px; text-align: center; margin-bottom: 5px;">Paso 1 — Selecciona los números deseados que estén en blanco</h3>
+    <div class="ticket-grid" id="tickets">
+        <!-- Los boletos se generarán aquí con JavaScript -->
+    </div>
+    
+    
+    
+</div>
         
 
         
-        <!-- Imagen debajo del H3 -->
-        <div class="image-container">
-            <img src="img/phone.png" alt="Descripción de la imagen">
-        </div>
+   
 
-        <div class="ticket-grid" id="tickets">
-            <!-- Los boletos se generarán aquí con JavaScript -->
-        </div>
+
         
         <!-- Formulario de Datos Personales -->
         <form id="formulario" onsubmit="enviarSeleccion(); return false;">
-            <h2>Nombre y forma de pago</h2>
+            <h3 style="background-color: #4CAF50; color: white; padding: 10px; text-align: center; margin-bottom: 5px;">Paso 2 — Escribe tu nombre y apellido</h3>
+            <h2>Nombre y Apellido</h2>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" required>
-            <br><br>
-            <label for="medioPago">Medio de Pago:</label>
+            
+            <h3 style="background-color: #4CAF50; color: white; padding: 10px; text-align: center; margin-bottom: 5px;">Paso 3 — Selecciona el método de pago</h3>
+            
+            <h2>Medio de Pago:</h2>
             <select id="medioPago" required>
                 <option value="Pago movil">Pago movil</option>
                 <option value="Zelle">Zelle</option>
@@ -148,10 +157,11 @@
                 <option value="Bolivianos">Bolivianos</option>
                 <option value="Otro">Otro</option>
             </select>
-            <br><br>
+        
+            <h3 style="background-color: #4CAF50; color: white; padding: 10px; text-align: center; margin-bottom: 5px;">Paso 4 — Envia selección por WhatsApp</h3>
             <button type="submit" class="whatsapp-button">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-                Enviar Selección por WhatsApp
+                Enviar
             </button>
         </form>
     </div>
